@@ -30,7 +30,34 @@
     "inversePrimary": "#ADC6FF",
     "surfaceTint": "#445E91",
     "outlineVariant": "#C4C6D0",
-    "scrim": "#000000"
+    "scrim": "#000000",
+    "terminalColors": {
+      "foreground": "#1A1B20",
+      "background": "#F9F9FF",
+      "cursor": "#373b41",
+      "color0": "#1d1f21",
+      "color1": "#CC342B",
+      "color2": "#198844",
+      "color3": "#FBA922",
+      "color4": "#3971ED",
+      "color5": "#A36AC7",
+      "color6": "#3971ED",
+      "color7": "#c5c8c6",
+      "color8": "#969896",
+      "color9": "#CC342B",
+      "color10": "#198844",
+      "color11": "#FBA922",
+      "color12": "#3971ED",
+      "color13": "#A36AC7",
+      "color14": "#3971ED",
+      "color15": "#ffffff",
+      "color16": "#F96A38",
+      "color17": "#3971ED",
+      "color18": "#282a2e",
+      "color19": "#373b41",
+      "color20": "#b4b7b4",
+      "color21": "#e0e0e0"
+    }
   },
   "dark": {
     "primary": "#ADC6FF",
@@ -61,6 +88,27 @@
     "inversePrimary": "#445E91",
     "surfaceTint": "#D8E2FF",
     "outlineVariant": "#44474F",
-    "scrim": "#000000"
+    "scrim": "#000000",
+    "terminalColors": {
+      "background": "#111318",
+      "foreground": "#E2E2E9",
+      "cursor": "#6e6a86",
+      "color0": "#393552",
+      "color8": "#6e6a86",
+      "color1": "#eb6f92",
+      "color9": "#eb6f92",
+      "color2": "#3e8fb0",
+      "color10": "#3e8fb0",
+      "color3": "#f6c177",
+      "color11": "#f6c177",
+      "color4": "#9ccfd8",
+      "color12": "#9ccfd8",
+      "color5": "#c4a7e7",
+      "color13": "#c4a7e7",
+      "color6": "#ea9a97",
+      "color14": "#ea9a97",
+      "color7": "#e0def4",
+      "color15": "#e0def4"
+    }
   }
 }
