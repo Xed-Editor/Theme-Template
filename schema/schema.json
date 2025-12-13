@@ -1,0 +1,286 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Xed-Editor theme",
+    "description": "A theme for Xed-Editor",
+    "type": "object",
+    "required": ["id", "name", "targetVersion"],
+    "properties": {
+        "$schema": {
+            "type": "string",
+            "description": "Xed-Editor theme schema URL. This property enables theme validation and auto-completion"
+        },
+        "id": {
+            "type": "string",
+            "description": "Unique identifier for the theme"
+        },
+        "name": {
+            "type": "string",
+            "description": "Display name of the theme"
+        },
+        "targetVersion": {
+            "type": "integer",
+            "description": "Target version of Xed-Editor",
+            "default": 75
+        },
+        "inheritBase": {
+            "type": "boolean",
+            "description": "Whether to inherit `tokenColors` from base theme",
+            "default": true
+        },
+        "light": {
+            "type": "object",
+            "description": "Color palette for light mode",
+            "$ref": "#/$defs/colorPalette"
+        },
+        "dark": {
+            "type": "object",
+            "description": "Color palette for dark mode",
+            "$ref": "#/$defs/colorPalette"
+        }
+    },
+    "$defs": {
+        "colorPalette": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "baseColors": {
+                    "$ref": "#/$defs/baseColors"
+                },
+                "editorColors": {
+                    "$ref": "#/$defs/editorColors"
+                },
+                "terminalColors": {
+                    "$ref": "#/$defs/terminalColors"
+                },
+                "tokenColors": {
+                    "oneOf": [
+                        {
+                            "type": "object",
+                            "description": "Syntax highlighting colors for the editor.\nWhen defined as an object, you can specify colors for different syntax elements directly. This option allows you to define a mapping only from syntax elements to their corresponding foreground colors.",
+                            "additionalProperties": {
+                                "type": "string",
+                                "$ref": "#/$defs/RGBAColor"
+                            }
+                        },
+                        {
+                            "type": "array",
+                            "description": "Syntax highlighting colors for the editor.\nWhen defined as an array, you can create more complex rules for syntax highlighting. This option follows the TextMate grammar conventions (https://manual.macromates.com/en/language_grammars).",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "Optional name for the color rule"
+                                    },
+                                    "scope": {
+                                        "type": ["string", "array"],
+                                        "description": "Scope(s) for which the color applies"
+                                    },
+                                    "settings": {
+                                        "type": "object",
+                                        "description": "Color settings for the specified scope",
+                                        "properties": {
+                                            "foreground": {
+                                                "type": "string",
+                                                "$ref": "#/$defs/RGBAColor"
+                                            },
+                                            "background": {
+                                                "type": "string",
+                                                "$ref": "#/$defs/RGBAColor"
+                                            },
+                                            "fontStyle": {
+                                                "type": "string",
+                                                "pattern": "^(none|((bold|italic|underline|strikethrough)(\\s+(bold|italic|underline|strikethrough))*))$",
+                                                "description": "Font style (e.g., `bold`, `italic`, `underline`)"
+                                            }
+                                        }
+                                    }
+                                },
+                                "required": ["scope", "settings"]
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "baseColors": {
+            "type": "object",
+            "description": "Colors for the user interface of the app",
+            "properties": {
+                "primary": { "$ref": "#/$defs/ARGBColor" },
+                "onPrimary": { "$ref": "#/$defs/ARGBColor" },
+                "primaryContainer": { "$ref": "#/$defs/ARGBColor" },
+                "onPrimaryContainer": { "$ref": "#/$defs/ARGBColor" },
+                "secondary": { "$ref": "#/$defs/ARGBColor" },
+                "onSecondary": { "$ref": "#/$defs/ARGBColor" },
+                "secondaryContainer": { "$ref": "#/$defs/ARGBColor" },
+                "onSecondaryContainer": { "$ref": "#/$defs/ARGBColor" },
+                "tertiary": { "$ref": "#/$defs/ARGBColor" },
+                "onTertiary": { "$ref": "#/$defs/ARGBColor" },
+                "tertiaryContainer": { "$ref": "#/$defs/ARGBColor" },
+                "onTertiaryContainer": { "$ref": "#/$defs/ARGBColor" },
+                "error": { "$ref": "#/$defs/ARGBColor" },
+                "onError": { "$ref": "#/$defs/ARGBColor" },
+                "errorContainer": { "$ref": "#/$defs/ARGBColor" },
+                "onErrorContainer": { "$ref": "#/$defs/ARGBColor" },
+                "background": { "$ref": "#/$defs/ARGBColor" },
+                "onBackground": { "$ref": "#/$defs/ARGBColor" },
+                "surface": { "$ref": "#/$defs/ARGBColor" },
+                "onSurface": { "$ref": "#/$defs/ARGBColor" },
+                "surfaceVariant": { "$ref": "#/$defs/ARGBColor" },
+                "onSurfaceVariant": { "$ref": "#/$defs/ARGBColor" },
+                "outline": { "$ref": "#/$defs/ARGBColor" },
+                "outlineVariant": { "$ref": "#/$defs/ARGBColor" },
+                "inverseSurface": { "$ref": "#/$defs/ARGBColor" },
+                "inverseOnSurface": { "$ref": "#/$defs/ARGBColor" },
+                "inversePrimary": { "$ref": "#/$defs/ARGBColor" },
+                "surfaceTint": { "$ref": "#/$defs/ARGBColor" },
+                "surfaceDim": { "$ref": "#/$defs/ARGBColor" },
+                "surfaceBright": { "$ref": "#/$defs/ARGBColor" },
+                "surfaceContainerLowest": { "$ref": "#/$defs/ARGBColor" },
+                "surfaceContainerLow": { "$ref": "#/$defs/ARGBColor" },
+                "surfaceContainer": { "$ref": "#/$defs/ARGBColor" },
+                "surfaceContainerHigh": { "$ref": "#/$defs/ARGBColor" },
+                "surfaceContainerHighest": { "$ref": "#/$defs/ARGBColor" },
+                "scrim": { "$ref": "#/$defs/ARGBColor" }
+            },
+            "additionalProperties": false
+        },
+        "editorColors": {
+            "type": "object",
+            "description": "Colors for the user interface of the editor",
+            "properties": {
+                "problem_typo": { "$ref": "#/$defs/ARGBColor" },
+                "problem_warning": { "$ref": "#/$defs/ARGBColor" },
+                "problem_error": { "$ref": "#/$defs/ARGBColor" },
+                "sticky_scroll_divider": { "$ref": "#/$defs/ARGBColor" },
+                "strikethrough": { "$ref": "#/$defs/ARGBColor" },
+                "strike_through": { "deprecated": true, "$ref": "#/$defs/ARGBColor" },
+                "diagnostic_tooltip_action": { "$ref": "#/$defs/ARGBColor" },
+                "diagnostic_tooltip_detailed_msg": { "$ref": "#/$defs/ARGBColor" },
+                "diagnostic_tooltip_brief_msg": { "$ref": "#/$defs/ARGBColor" },
+                "diagnostic_tooltip_background": { "$ref": "#/$defs/ARGBColor" },
+                "function_char_background_stroke": { "$ref": "#/$defs/ARGBColor" },
+                "hard_wrap_marker": { "$ref": "#/$defs/ARGBColor" },
+                "text_inlay_hint_foreground": { "$ref": "#/$defs/ARGBColor" },
+                "text_inlay_hint_background": { "$ref": "#/$defs/ARGBColor" },
+                "snippet_background_editing": { "$ref": "#/$defs/ARGBColor" },
+                "snippet_background_related": { "$ref": "#/$defs/ARGBColor" },
+                "snippet_background_inactive": { "$ref": "#/$defs/ARGBColor" },
+                "side_block_line": { "$ref": "#/$defs/ARGBColor" },
+                "non_printable_char": { "$ref": "#/$defs/ARGBColor" },
+                "text_selected": { "$ref": "#/$defs/ARGBColor" },
+                "matched_text_background": { "$ref": "#/$defs/ARGBColor" },
+                "matched_text_border": { "$ref": "#/$defs/ARGBColor" },
+                "completion_wnd_corner": { "$ref": "#/$defs/ARGBColor" },
+                "completion_wnd_background": { "$ref": "#/$defs/ARGBColor" },
+                "completion_wnd_text_matched": { "$ref": "#/$defs/ARGBColor" },
+                "completion_wnd_text_primary": { "$ref": "#/$defs/ARGBColor" },
+                "completion_wnd_text_secondary": { "$ref": "#/$defs/ARGBColor" },
+                "completion_wnd_item_current": { "$ref": "#/$defs/ARGBColor" },
+                "line_block_label": { "deprecated": true, "$ref": "#/$defs/ARGBColor" },
+                "text_highlight_strong_background": { "$ref": "#/$defs/ARGBColor" },
+                "text_highlight_strong_border": { "$ref": "#/$defs/ARGBColor" },
+                "text_highlight_background": { "$ref": "#/$defs/ARGBColor" },
+                "text_highlight_border": { "$ref": "#/$defs/ARGBColor" },
+                "highlighted_delimiters_background": { "$ref": "#/$defs/ARGBColor" },
+                "highlighted_delimiters_underline": { "$ref": "#/$defs/ARGBColor" },
+                "highlighted_delimiters_foreground": { "$ref": "#/$defs/ARGBColor" },
+                "highlighted_delimiters_border": { "$ref": "#/$defs/ARGBColor" },
+                "line_number_panel_text": { "$ref": "#/$defs/ARGBColor" },
+                "line_number_panel": { "$ref": "#/$defs/ARGBColor" },
+                "block_line_current": { "$ref": "#/$defs/ARGBColor" },
+                "block_line": { "$ref": "#/$defs/ARGBColor" },
+                "scroll_bar_track": { "$ref": "#/$defs/ARGBColor" },
+                "scroll_bar_thumb_pressed": { "$ref": "#/$defs/ARGBColor" },
+                "scroll_bar_thumb": { "$ref": "#/$defs/ARGBColor" },
+                "underline": { "$ref": "#/$defs/ARGBColor" },
+                "current_line": { "$ref": "#/$defs/ARGBColor" },
+                "current_row_border": { "$ref": "#/$defs/ARGBColor" },
+                "selection_handle": { "$ref": "#/$defs/ARGBColor" },
+                "selection_insert": { "$ref": "#/$defs/ARGBColor" },
+                "selected_text_background": { "$ref": "#/$defs/ARGBColor" },
+                "selected_text_border": { "$ref": "#/$defs/ARGBColor" },
+                "text_normal": { "$ref": "#/$defs/ARGBColor" },
+                "whole_background": { "$ref": "#/$defs/ARGBColor" },
+                "line_number_background": { "$ref": "#/$defs/ARGBColor" },
+                "line_number_current": { "$ref": "#/$defs/ARGBColor" },
+                "line_number": { "$ref": "#/$defs/ARGBColor" },
+                "line_divider": { "$ref": "#/$defs/ARGBColor" },
+                "signature_text_normal": { "$ref": "#/$defs/ARGBColor" },
+                "signature_text_highlighted_parameter": { "$ref": "#/$defs/ARGBColor" },
+                "hover_text_normal": { "$ref": "#/$defs/ARGBColor" },
+                "hover_text_highlighted": { "$ref": "#/$defs/ARGBColor" },
+                "hover_background": { "$ref": "#/$defs/ARGBColor" },
+                "hover_border": { "$ref": "#/$defs/ARGBColor" },
+                "static_span_background": { "$ref": "#/$defs/ARGBColor" },
+                "static_span_foreground": { "$ref": "#/$defs/ARGBColor" },
+                "signature_background": { "$ref": "#/$defs/ARGBColor" },
+                "signature_border": { "$ref": "#/$defs/ARGBColor" },
+                "text_action_window_background": { "$ref": "#/$defs/ARGBColor" },
+                "text_action_window_icon_color": { "$ref": "#/$defs/ARGBColor" },
+                "attribute_value": { "deprecated": true, "$ref": "#/$defs/ARGBColor" },
+                "attribute_name": { "deprecated": true, "$ref": "#/$defs/ARGBColor" },
+                "html_tag": { "deprecated": true, "$ref": "#/$defs/ARGBColor" },
+                "annotation": { "deprecated": true, "$ref": "#/$defs/ARGBColor" },
+                "function_name": { "deprecated": true, "$ref": "#/$defs/ARGBColor" },
+                "identifier_name": { "deprecated": true, "$ref": "#/$defs/ARGBColor" },
+                "identifier_var": { "deprecated": true, "$ref": "#/$defs/ARGBColor" },
+                "literal": { "deprecated": true, "$ref": "#/$defs/ARGBColor" },
+                "operator": { "deprecated": true, "$ref": "#/$defs/ARGBColor" },
+                "comment": { "deprecated": true, "$ref": "#/$defs/ARGBColor" },
+                "keyword": { "deprecated": true, "$ref": "#/$defs/ARGBColor" }
+            },
+            "additionalProperties": false
+        },
+        "terminalColors": {
+            "type": "object",
+            "description": "Colors for the integrated terminal",
+            "properties": {
+                "foreground": { "deprecated": true, "$ref": "#/$defs/RGBColor" },
+                "background": { "deprecated": true, "$ref": "#/$defs/RGBColor" },
+                "cursor": { "$ref": "#/$defs/RGBColor" },
+                "color0": { "$ref": "#/$defs/RGBColor" },
+                "color1": { "$ref": "#/$defs/RGBColor" },
+                "color2": { "$ref": "#/$defs/RGBColor" },
+                "color3": { "$ref": "#/$defs/RGBColor" },
+                "color4": { "$ref": "#/$defs/RGBColor" },
+                "color5": { "$ref": "#/$defs/RGBColor" },
+                "color6": { "$ref": "#/$defs/RGBColor" },
+                "color7": { "$ref": "#/$defs/RGBColor" },
+                "color8": { "$ref": "#/$defs/RGBColor" },
+                "color9": { "$ref": "#/$defs/RGBColor" },
+                "color10": { "$ref": "#/$defs/RGBColor" },
+                "color11": { "$ref": "#/$defs/RGBColor" },
+                "color12": { "$ref": "#/$defs/RGBColor" },
+                "color13": { "$ref": "#/$defs/RGBColor" },
+                "color14": { "$ref": "#/$defs/RGBColor" },
+                "color15": { "$ref": "#/$defs/RGBColor" },
+                "color16": { "$ref": "#/$defs/RGBColor" },
+                "color17": { "$ref": "#/$defs/RGBColor" },
+                "color18": { "$ref": "#/$defs/RGBColor" },
+                "color19": { "$ref": "#/$defs/RGBColor" },
+                "color20": { "$ref": "#/$defs/RGBColor" },
+                "color21": { "$ref": "#/$defs/RGBColor" }
+            },
+            "additionalProperties": false
+        },
+        "ARGBColor": {
+            "type": "string",
+            "pattern": "^(#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})|red|blue|green|black|white|gray|cyan|magenta|yellow|lightgray|darkgray|grey|lightgrey|darkgrey|aqua|fuchsia|lime|maroon|navy|olive|purple|silver|teal)$",
+            "description": "Color in standard Android hex format (#RRGGBB or #AARRGGBB) or color name"
+        },
+        "RGBAColor": {
+            "type": "string",
+            "pattern": "^(#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})|red|blue|green|black|white|gray|cyan|magenta|yellow|lightgray|darkgray|grey|lightgrey|darkgrey|aqua|fuchsia|lime|maroon|navy|olive|purple|silver|teal)$",
+            "description": "Color in hex format (#RRGGBB or #RRGGBBAA) or color name"
+        },
+        "RGBColor": {
+            "type": "string",
+            "pattern": "^#([A-Fa-f0-9]{6})$",
+            "description": "Color in hex format (#RRGGBB). Alpha channel is not supported"
+        },
+        "additionalProperties": false
+    },
+    "additionalProperties": false
+}
