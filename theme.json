@@ -1,5 +1,5 @@
 {
-    "$schema": "https://raw.githubusercontent.com/Xed-Editor/Theme-Template/schema/schema.json",
+    "$schema": "https://raw.githubusercontent.com/Xed-Editor/Theme-Template/refs/heads/main/schema/schema.json",
     "id": "theme-template",
     "name": "Theme template",
     "targetVersion": 75,
