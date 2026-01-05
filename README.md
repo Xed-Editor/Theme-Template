@@ -123,7 +123,7 @@ The values have to be in the standard Android hex color format (`#RRGGBB` or `#A
 | `problem_error`                        | string | Color for errors in editor                            |
 | `sticky_scroll_divider`                | string | Color of sticky scroll divider                        |
 | `strikethrough`                        | string | Color for strikethrough text                          |
-| `strike_through`                       | string | old property for strikethrough (_Deprecated_)         |
+| ~~`strike_through`~~                   | string | old property for strikethrough (_Deprecated_)         |
 | `diagnostic_tooltip_action`            | string | Color of action buttons in diagnostic tooltips        |
 | `diagnostic_tooltip_detailed_msg`      | string | Color for detailed messages in diagnostic tooltips    |
 | `diagnostic_tooltip_brief_msg`         | string | Color for brief messages in diagnostic tooltips       |
@@ -146,7 +146,7 @@ The values have to be in the standard Android hex color format (`#RRGGBB` or `#A
 | `completion_wnd_text_primary`          | string | Primary text color in completion window               |
 | `completion_wnd_text_secondary`        | string | Secondary text color in completion window             |
 | `completion_wnd_item_current`          | string | Background color of current item in completion window |
-| `line_block_label`                     | string | color for line block label (_Deprecated_)             |
+| ~~`line_block_label`~~                 | string | color for line block label (_Deprecated_)             |
 | `text_highlight_strong_background`     | string | Background for strong highlights                      |
 | `text_highlight_strong_border`         | string | Border for strong highlights                          |
 | `text_highlight_background`            | string | Background for normal highlights                      |
