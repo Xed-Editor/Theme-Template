@@ -4,7 +4,7 @@ This is a theme template for [Xed-Editor](https://github.com/Xed-Editor/Xed-Edit
 You can use this template as a starting point to build your own themes.
 
 > [!TIP]
-> See the [documentation](https://xed-editor.github.io/docs/themes#creating-custom-themes) page for details on customizing the theme.
+> See the [documentation](https://xed-editor.github.io/Xed-Docs/docs/themes/#creating-custom-themes) page for details on customizing the theme.
 
 ## How to get started
 
