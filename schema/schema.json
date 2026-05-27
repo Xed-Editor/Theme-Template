@@ -3,7 +3,7 @@
     "title": "Xed-Editor theme",
     "description": "A theme for Xed-Editor",
     "type": "object",
-    "required": ["id", "name", "targetVersion"],
+    "required": ["id", "name"],
     "properties": {
         "$schema": {
             "type": "string",
@@ -17,10 +17,10 @@
             "type": "string",
             "description": "Display name of the theme"
         },
-        "targetVersion": {
-            "type": "integer",
-            "description": "Target version of Xed-Editor",
-            "default": 75
+        "minAppVersion": {
+            "type": ["integer", "null"],
+            "default": null,
+            "description": "Minimum Xed-Editor version supported. null means no minimum restriction"
         },
         "inheritBase": {
             "type": "boolean",
